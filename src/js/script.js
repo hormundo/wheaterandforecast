@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", e => {
 })
 
 const forecastCity = json => {
-   
     const forecast = {
         dia: "",
         icon: "",
@@ -35,7 +34,6 @@ const forecastCity = json => {
     const $fragment = document.createDocumentFragment();
 
     for (let i = 5; i < 40; i+=8) {
-        
         let dia = json.list[i].dt_txt.split(" ");
 
         forecast.dia = dia[0];
@@ -59,7 +57,6 @@ const forecastCity = json => {
 }
 
 const hightlights = json => { 
-    
     document.querySelector(".wind-status .wind-speed").textContent = `${json.list[0].wind.speed} Kmh`;
     let $humidityBar = document.querySelector(".wind-status .progress-humidity");
     $humidityBar.style.width = json.list[0].main.humidity+"%";
@@ -83,7 +80,6 @@ async function getCity(lat, lon, city, unit) {
     }
     
     try {
-        
         let res = await fetch(url);
         let json = await res.json();
         
@@ -157,7 +153,6 @@ document.addEventListener('click', e => {
 
 
     if(e.target.matches(".btn-current-location")) {
-        
         navigator.geolocation.getCurrentPosition(function(pos) {
        
             //Si es aceptada guardamos lo latitud y longitud
