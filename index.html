@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Wheater and Forecast</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="./dist/css/app.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  </head>
+  <body>
+      <main class="container-fluid">
+          <div class="row flex-column flex-md-row flex-nowrap">
+              <section class="col-12 col-md-4 col-left p-5">
+                <section class="d-flex flex-column col-12 menu p-5">
+                  <div class="flex justify-content-end mb-5">
+                    <button class="text-white-regular close"><i class="fas fa-times"></i></button>
+                  </div>
+                  <div class="search row">
+                    <div class="col-9 input-search">
+                      <input class="w-100" type="text" placeholder="Search location">
+                    </div>
+                    <div class="col-3">
+                      <button class="btn btn-search w-100 text-white-semibold">Search</button>
+                    </div>
+                  </div>
+                </section>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex justify-content-between mb-5 w-100">
+                        <button class="btn btn-search-location">Buscar localización</button>
+                        <button class="btn btn-current-location rounded-circle d-flex justify-content-center align-items-center"></button>
+                    </div>
+                    <figure class="current-wheater d-flex justify-content-center align-items-center">
+                      <img src="" alt="">
+                    </figure>
+                    <span class="d-block current-temperature text-white-regular mb-3"><sub class="text-gray-semibold">°C</sub>
+                    </span>
+                    <span class="d-block current-phenomenom-atmospheric text-gray-semibold mb-5"></span>
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="text-gray2-semibold date"></span> | <span class="text-gray2-semibold current-location"></span>
+                    </div>
+                    <div class="d-flex mb-3">
+                      <span class="text-gray2-semibold sunrise mr-5"></span><span class="text-gray2-semibold sunset"></span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <span class="text-gray2-semibold mr-3">Población:</span> <span class="text-gray-bold population"></span>
+                    </div>
+                </div>
+              </section>
+              <section class="col-12 col-md-8 content">
+                <div class="d-flex flex-column align-items-center">
+                  <div class="d-flex justify-content-end mb-5 w-100">
+                    <button class="btn btn-type-term btn-type-term--c rounded-circle d-flex justify-content-center align-items-center mr-3 active">°C</button>
+                    <button class="btn btn-type-term btn-type-term--f rounded-circle d-flex justify-content-center align-items-center">°F</button>
+                  </div>
+                  <div class="forecasts w-100">                    
+                  </div>
+                  <div class="d-flex flex-column w-100">
+
+                    <div class="hightlights">
+                      <div class="hightlight wind-status d-flex flex-column p-4 align-items-center">
+                        <h6 class="text-white-regular mb-5">Velocidad del viento</h6>
+                          <span class="wind-speed text-white-regular d-block"></span>
+                      </div>
+
+                      <div class="hightlight wind-status d-flex flex-column p-4 align-items-center">
+                        <h6 class="text-white-regular mb-5">Humedad</h6>
+                        <div class="d-flex justify-content-between w-100">
+                          <span class="text-gray2-semibold">0</span>
+                          <span class="text-gray2-semibold">50</span>
+                          <span class="text-gray2-semibold">100</span>
+                        </div>
+                        <div class="w-100 wrapper-progress">
+                          <div class="progress-humidity"></div>
+                        </div>
+                        <span class="humidity-percent text-white-regular d-block mb-3"></span>
+                      </div>
+
+                      <div class="hightlight presure-status d-flex flex-column p-4 align-items-center">
+                        <h6 class="text-white-regular mb-5">Presión atmosférica</h6>
+                          <span class="presure text-white-regular d-block"></span>
+                      </div>
+
+                      <div class="hightlight sea-level-status d-flex flex-column p-4 align-items-center">
+                        <h6 class="text-white-regular mb-5">Nivel de mar</h6>
+                          <span class="sea-level text-white-regular d-block mb-3"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+          </div>
+      </main>
+
+      <template class="forecast-template d-flex flex-column align-items-center p-4">
+        <div class="forecast d-flex flex-column align-items-center p-4">
+          <h6 class="text-white-regular"></h6>
+          <figure class="current-wheater d-flex justify-content-center align-items-center mb-3">
+            <img src="" alt="">
+          </figure>
+          <h6 class="text-white-regular description mb-3"></h6>
+          <div class="min-max w-100 d-flex justify-md-content-between justify-content-center">
+            <div class="d-flex align-items-center mr-5">
+              <span class="text-white-regular mintemp"></span><sub class='text-white-regular'>°C</sub>
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="text-gray-semibold maxtemp"></span><sub class='text-white-regular '>°C</sub>
+            </div>
+          </div>
+        </div>
+      </template>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="src/js/script.js"></script>
+    <script src='https://momentjs.com/downloads/moment.js'></script>
+
+  </body>
+</html>

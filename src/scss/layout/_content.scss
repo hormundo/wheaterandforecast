@@ -1,0 +1,87 @@
+.content {
+    padding: 3rem;
+
+    @include tablet {
+        padding: 3rem 10rem;
+    }
+    h6 {
+        font-size: 1.4rem;
+    }
+    .btn-type-term {
+        background-color: $color-gray_585676;
+        color: $color-white_E7E7EB;
+        font-weight: 700;
+        height: 4rem;
+        width: 4rem;
+        font-size: 1.8rem;
+        
+        &:hover, &.active {
+            background-color: $color-white_E7E7EB;
+            color: $color-blue_100E1D;
+        }
+    }
+
+    .forecasts {
+        @include grid(1, 2rem);
+
+        @include tablet {
+            @include grid(5, 2rem);
+        }
+    
+        margin-bottom: 5rem;
+        .forecast {
+            background-color: $color-blue_1E213A;
+            figure {
+                width: 5.6rem;
+                height: 6.2rem;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .hightlights {
+        @include grid(1, 4rem);
+        
+        @include tablet {
+            @include grid(2, 4rem);
+        }
+    
+        .hightlight {
+            height: 135px;
+            background-color: $color-blue_1E213A;
+            .wind-speed, .sea-level, .presure {
+                font-size: 3.5rem;
+            }
+
+            .wind-direction {
+                font-size: 1.2rem;
+                span {
+                    width: 2.9rem;
+                    height: 2.9rem;
+                    background-color: $color-gray_A09FB1;
+                }
+            }
+
+            .wrapper-progress {
+                border-radius: 20px;
+                background-color: $color-white_E7E7EB;
+                .progress-humidity {
+                    color: $color-blue_100E1D;
+                    border-radius: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: 1s ease;
+                    height: 20px;
+                    font-weight: 700;
+                    background-color: #ffec65;
+                }
+            }
+            
+        }
+    }
+}

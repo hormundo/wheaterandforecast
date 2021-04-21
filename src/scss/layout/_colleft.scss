@@ -1,0 +1,103 @@
+.col-left {
+    background-color: $color-blue_1E213A;
+    position: relative;
+
+    &:after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-image: url(./../../src/images/Cloud-background.png);
+        opacity: .5;
+        position: absolute;
+        background-repeat: no-repeat;
+        left: 0;
+        background-position: top;
+        top: 50px;
+    }
+
+    .btn-search-location {
+        background-color: $color-gray_6E707A;
+        color: $color-white_E7E7EB;
+
+        &:hover {
+            background-color: $color-white_E7E7EB;
+            color: $color-blue_100E1D;
+            
+        }
+    }
+
+    .btn-current-location {
+        background-color: $color-gray_6E707A;
+        height: 2.2rem;
+        width: 2.2rem;
+
+        &:hover {
+            background-color: $color-white_E7E7EB;
+       
+            &:before {
+                color: $color-blue_100E1D;
+            }
+        }
+        &:before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f05b";
+            font-weight: 900;
+            color: $color-white_E7E7EB;
+        }
+    }
+
+    .current-temperature {
+        font-size: 14.4rem;
+        sub {
+            font-size: 5rem;
+        }
+    }
+
+    .current-phenomenom-atmospheric {
+        font-size: 3.6rem;
+    }
+
+    .date,
+    .current-location {
+        margin: 0 1rem;
+        font-size: 1.8rem;
+    }
+
+    .current-location {
+        &:before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f3c5";
+            font-weight: 900;
+            margin-right: 1rem;
+            color: $color-gray_6E707A;
+        }
+    }
+
+    .sunset, .sunrise {
+        &:before {
+            content: "";
+            width: 3rem;
+            height: 3rem;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: inline-block;
+            vertical-align: bottom;
+            margin-right: 1rem;
+        }
+    }
+
+    .sunset {
+        &:before {
+            background-image: url(../../src/images/sunset.png);
+        }
+       
+    }
+
+    .sunrise {
+        &:before {
+            background-image: url(../..//src/images/sunrise.png);
+        }
+       
+    }
+}

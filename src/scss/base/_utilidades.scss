@@ -1,0 +1,34 @@
+//textos
+@import 'base/mixins';
+
+.text-white-regular {
+    @include text($color-white_E7E7EB, $regular);
+}
+
+.text-white-semibold {
+    @include text($color-white_E7E7EB, $semibold);
+}
+
+.text-white-bold {
+    @include text($color-white_E7E7EB, $bold);
+}
+
+.text-white-bold {
+    @include text($color-white_E7E7EB, $bold);
+}
+
+.text-gray-semibold {
+    @include text($color-gray_A09FB1, $semibold);
+}
+
+.text-gray-bold {
+    @include text($color-gray_A09FB1, $bold);
+}
+
+.text-gray2-semibold {
+    @include text($color-gray_88869D, $regular);
+}
+
+.text-blue-bold {
+    @include text($color-blue_100E1D, $bold);
+}
