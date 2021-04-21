@@ -1,5 +1,5 @@
 const KEY = "1dc82a28b0407cd1aab188ddebb887d6";
-const URLBASE = "http://api.openweathermap.org/data/2.5/forecast";
+const URLBASE = "https://api.openweathermap.org/data/2.5/forecast";
 
 document.addEventListener("DOMContentLoaded", e => {
     //Pedir activación de ubicación
