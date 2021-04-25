@@ -138,6 +138,7 @@ async function getCity(lat, lon, city, unit) {
         if (!res.ok) throw {status: res.status, statusText: res.statusText};
 
         document.querySelector(".current-temperature").style.display = "block";
+        document.querySelector(".current-location").style.display = "block";
         document.querySelector(".sunrise").style.display = "flex";
         document.querySelector(".sunset").style.display = "flex";
 

@@ -65,6 +65,7 @@
     }
 
     .current-location {
+        display: none;
         &:before {
             font-family: "Font Awesome 5 Free";
             content: "\f3c5";
