@@ -8,6 +8,7 @@
         font-size: 1.4rem;
     }
     .btn-type-term {
+        display: none;
         background-color: $color-gray_585676;
         color: $color-white_E7E7EB;
         font-weight: 700;
@@ -48,6 +49,7 @@
         
         @include tablet {
             @include grid(2, 4rem);
+            display: none;
         }
     
         .hightlight {

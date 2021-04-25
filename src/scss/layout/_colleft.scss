@@ -47,6 +47,7 @@
     }
 
     .current-temperature {
+        display: none;
         font-size: 14.4rem;
         sub {
             font-size: 5rem;
@@ -74,6 +75,7 @@
     }
 
     .sunset, .sunrise {
+        display: none;
         &:before {
             content: "";
             width: 3rem;

@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", e => {
 })
 
 const forecastCity = json => {
+    document.querySelector(".btn-type-term--c").style.display = "flex";
+    document.querySelector(".btn-type-term--f").style.display = "flex";
+
     const forecast = {
         dia: "",
         icon: "",
@@ -57,6 +60,7 @@ const forecastCity = json => {
 }
 
 const hightlights = json => { 
+    document.querySelector(".hightlights").style.display = "grid";
     document.querySelector(".wind-status .wind-speed").textContent = `${json.list[0].wind.speed} Kmh`;
     let $humidityBar = document.querySelector(".wind-status .progress-humidity");
     $humidityBar.style.width = json.list[0].main.humidity+"%";
@@ -132,6 +136,10 @@ async function getCity(lat, lon, city, unit) {
         document.querySelector(".date").textContent = `${dayWeek}, ${date.toLocaleDateString()}`;
 
         if (!res.ok) throw {status: res.status, statusText: res.statusText};
+
+        document.querySelector(".current-temperature").style.display = "block";
+        document.querySelector(".sunrise").style.display = "flex";
+        document.querySelector(".sunset").style.display = "flex";
 
         forecastCity(json);
         hightlights(json);
