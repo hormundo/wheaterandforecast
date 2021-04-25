@@ -129,7 +129,7 @@ async function getCity(lat, lon, city, unit) {
                     break;
             case 6: dayWeek = "Sábado";
                     break;
-            case 7: dayWeek = "Domingo";
+            case 0: dayWeek = "Domingo";
                     break;
         }
 
