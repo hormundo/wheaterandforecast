@@ -22,13 +22,13 @@
   </head>
   <body>
       <main class="container-fluid">
-          <div class="row flex-column flex-md-row flex-nowrap">
-              <section class="col-12 col-md-4 col-left p-5">
+          <div class="row flex-column flex-xl-row flex-nowrap">
+              <section class="col-12 col-xl-4 col-left p-5">
                 <section class="d-flex flex-column col-12 menu p-5">
                   <div class="flex justify-content-end mb-5">
                     <button class="text-white-regular close"><i class="fas fa-times"></i></button>
                   </div>
-                  <div class="search row">
+                  <div class="search row mb-5">
                     <div class="col-8 input-search">
                       <input class="w-100" type="text" placeholder="Search location">
                     </div>
@@ -36,6 +36,7 @@
                       <button class="btn btn-search w-100 text-white-semibold">Search</button>
                     </div>
                   </div>
+                  <div class="cities-fav"></div>
                 </section>
                 <div class="d-flex flex-column align-items-center">
                     <div class="d-flex justify-content-between mb-5 w-100">
@@ -49,7 +50,8 @@
                     </span>
                     <span class="d-block current-phenomenom-atmospheric text-gray-semibold mb-5"></span>
                     <div class="d-flex align-items-center mb-3">
-                        <span class="text-gray2-semibold date"></span> | <span class="text-gray2-semibold current-location"></span>
+                        <span class="text-gray2-semibold date"></span> | <span class="text-gray2-semibold current-location d-flex"></span>
+                        <button class="btn btn-fav rounded-circle d-flex justify-content-center align-items-center"><i class="fas fa-heart"></i></button>
                     </div>
                     <div class="d-flex mb-3">
                       <span class="text-gray2-semibold sunrise mr-5"></span><span class="text-gray2-semibold sunset"></span>
@@ -59,7 +61,7 @@
                     </div>
                 </div>
               </section>
-              <section class="col-12 col-md-8 content">
+              <section class="col-12 col-xl-8 content">
                 <div class="d-flex flex-column align-items-center">
                   <div class="d-flex justify-content-end mb-5 w-100">
                     <button class="btn btn-type-term btn-type-term--c rounded-circle justify-content-center align-items-center mr-3 active">°C</button>
@@ -111,7 +113,7 @@
             <img src="" alt="">
           </figure>
           <h6 class="text-white-regular description mb-3"></h6>
-          <div class="min-max w-100 d-flex justify-md-content-between justify-content-center">
+          <div class="min-max w-100 d-flex justify-xl-content-between justify-content-center">
             <div class="d-flex align-items-center mr-5">
               <span class="text-white-regular mintemp"></span><sub class='text-white-regular'>°C</sub>
             </div>

@@ -1,7 +1,7 @@
 .col-left {
     background-color: $color-blue_1E213A;
     position: relative;
-
+    
     &:after {
         content: "";
         height: 100%;
@@ -22,7 +22,6 @@
         &:hover {
             background-color: $color-white_E7E7EB;
             color: $color-blue_100E1D;
-            
         }
     }
 
@@ -43,6 +42,18 @@
             content: "\f05b";
             font-weight: 900;
             color: $color-white_E7E7EB;
+        }
+    }
+
+    .btn-fav {
+        cursor: pointer;
+        z-index: 1;
+        &:focus {
+            box-shadow: none;
+        }
+        i {
+            font-size: 2.4rem;
+            color: pink;
         }
     }
 
@@ -94,13 +105,11 @@
         &:before {
             background-image: url(../../src/images/sunset.png);
         }
-       
     }
 
     .sunrise {
         &:before {
             background-image: url(../..//src/images/sunrise.png);
         }
-       
     }
 }

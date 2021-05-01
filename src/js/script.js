@@ -1,12 +1,14 @@
 const KEY = "1dc82a28b0407cd1aab188ddebb887d6";
 const URLBASE = "https://api.openweathermap.org/data/2.5/forecast";
 
+const citiesLocal = []
+
 document.addEventListener("DOMContentLoaded", e => {
     //Pedir activación de ubicación
 
     if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
        
-        //Si es aceptada guardamos lo latitud y longitud
+        //Si es aceptada guardamos la latitud y longitud
         lat = pos.coords.latitude;
         lon = pos.coords.longitude;
 
@@ -17,7 +19,41 @@ document.addEventListener("DOMContentLoaded", e => {
         //Si es rechazada enviamos de error por consola
         console.log('Ubicación no activada');
     });
+
+    getCitiesMenu();
 })
+
+const getCitiesMenu = () => {
+
+    let $citiesFav = document.querySelector(".cities-fav");
+
+    // Limpia el HTML previo
+    while( $citiesFav.firstChild ) {
+        $citiesFav.removeChild($citiesFav.firstChild);
+    }
+
+    let citiesLocal = localStorage.getItem("ciudades");
+
+    let  citiesSplit = citiesLocal === null ? null : citiesLocal.split(",");
+
+    let  result = citiesSplit === null ? null : citiesSplit.filter((item,index)=>{
+        return citiesSplit.indexOf(item) === index; });
+
+    result = result === null ? null : result.sort();
+    
+    if(result == "" || !result) {
+        
+    } else {
+        result.forEach(e=> {
+            $citiesFav.insertAdjacentHTML("afterbegin", `<div class="row px-4 mb-4">
+                <div class="col city-fav">
+                    ${e}
+                    <button class="btn btn-remove-fav rounded-circle d-flex justify-content-center align-items-center"><i class="fas fa-heart"></i></button>
+                </div>
+            </div>`);
+        });
+    }
+}
 
 const forecastCity = json => {
     document.querySelector(".btn-type-term--c").style.display = "flex";
@@ -66,7 +102,7 @@ const hightlights = json => {
     $humidityBar.style.width = json.list[0].main.humidity+"%";
     
     document.querySelector(".humidity-percent").textContent = `${json.list[0].main.humidity} %`;
-    document.querySelector(".presure").textContent = `${json.list[0].main.pressure} mts`;
+    document.querySelector(".presure").textContent = `${json.list[0].main.pressure} mb`;
     document.querySelector(".sea-level").textContent = `${json.list[0].main.sea_level} mts`;
 }
 
@@ -145,6 +181,11 @@ async function getCity(lat, lon, city, unit) {
         forecastCity(json);
         hightlights(json);
 
+        const synth = window.speechSynthesis;
+        const text = `En ${json.city.name} hace una temperatura de ${Math.round(json.list[0].main.temp)} grados, con ${json.list[0].weather[0].description}`;
+        const utterThis = new SpeechSynthesisUtterance(text) 
+        synth.speak(utterThis)
+
     } catch(err) {
         let message = err.statusText || "Ocurrio un error";
         document.querySelector(".content").insertAdjacentHTML("afterend",`<p><b>Error ${err.status} ${message}</b></p>`)
@@ -160,7 +201,6 @@ document.addEventListener('click', e => {
         document.querySelector(".menu").classList.remove("visible");
     }
 
-
     if(e.target.matches(".btn-current-location")) {
         navigator.geolocation.getCurrentPosition(function(pos) {
        
@@ -174,6 +214,7 @@ document.addEventListener('click', e => {
 
     if(e.target.matches(".btn-search")) {
         let city = document.querySelector("input").value;
+        document.querySelector("input").value = "";
         document.querySelector(".menu").classList.remove("visible");
 
         getCity(null, null, city, null);
@@ -197,5 +238,49 @@ document.addEventListener('click', e => {
         document.querySelector(".btn-type-term--f").classList.remove("active");
 
         getCity(null, null, city, unit);
+    }
+    
+    if(e.target.matches(".btn-fav") || e.target.matches(".btn-fav *")) {
+        city = document.querySelector(".current-location").textContent;
+
+        let citiesLocal = localStorage.getItem("ciudades");
+   
+        if(!citiesLocal) {
+            localStorage.setItem("ciudades", city);
+
+        } else {
+            let citiesLocal = localStorage.getItem("ciudades");
+
+            let citiesSplit = citiesLocal.split(" "); 
+
+            citiesLocal = [...citiesSplit, city];
+
+            localStorage.setItem("ciudades", citiesLocal);
+        }
+        
+        getCitiesMenu();
+    }
+
+    if(e.target.matches(".btn-remove-fav") || e.target.matches(".btn-remove-fav *")) {
+        
+        let removeCity = e.target.closest(".city-fav").textContent.trim();
+
+        let citiesLocal = localStorage.getItem("ciudades");
+
+        let citiesSplit = citiesLocal.split(","); 
+
+        citiesLocal = [...citiesSplit];
+
+        let citiesRemove = citiesLocal.filter(e => e !== removeCity);
+
+        localStorage.setItem("ciudades", citiesRemove);
+        
+        getCitiesMenu();
+    }
+
+    if(e.target.matches(".city-fav")) {
+        city = e.target.textContent;
+        document.querySelector(".menu").classList.remove("visible");
+        getCity(null, null, city, null);
     }
 })
