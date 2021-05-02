@@ -72,10 +72,10 @@ const forecastCity = json => {
     const $template = document.querySelector(".forecast-template").content;
     const $fragment = document.createDocumentFragment();
 
-    for (let i = 5; i < 40; i+=8) {
-        let dia = json.list[i].dt_txt.split(" ");
+    for (let i = 1; i < 40; i+=1) {
+        let dia = json.list[i].dt_txt;
 
-        forecast.dia = dia[0];
+        forecast.dia = dia;
         forecast.icon = json.list[i].weather[0].icon;
         forecast.desc = json.list[i].weather[0].description;
         forecast.mintemp = Math.round(json.list[i].main.temp_min);
@@ -103,7 +103,6 @@ const hightlights = json => {
     
     document.querySelector(".humidity-percent").textContent = `${json.list[0].main.humidity} %`;
     document.querySelector(".presure").textContent = `${json.list[0].main.pressure} mb`;
-    document.querySelector(".sea-level").textContent = `${json.list[0].main.sea_level} mts`;
 }
 
 async function getCity(lat, lon, city, unit) {
@@ -174,7 +173,8 @@ async function getCity(lat, lon, city, unit) {
         if (!res.ok) throw {status: res.status, statusText: res.statusText};
 
         document.querySelector(".current-temperature").style.display = "block";
-        document.querySelector(".current-location").style.display = "block";
+        document.querySelector(".current-location").style.display = "flex";
+        document.querySelector(".btn-fav").style.display = "flex";
         document.querySelector(".sunrise").style.display = "flex";
         document.querySelector(".sunset").style.display = "flex";
 
@@ -257,8 +257,21 @@ document.addEventListener('click', e => {
 
             localStorage.setItem("ciudades", citiesLocal);
         }
-        
+
         getCitiesMenu();
+        
+        let $notice = document.createElement("DIV");
+
+        $notice.classList.add("notice");
+        $notice.textContent = "Ciudad Añadida a favoritos";
+
+        document.querySelector(".col-left").insertAdjacentElement("beforeend", $notice);
+
+        setTimeout(() => {
+            $notice.remove();
+        }, 3000);
+
+
     }
 
     if(e.target.matches(".btn-remove-fav") || e.target.matches(".btn-remove-fav *")) {

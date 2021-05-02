@@ -26,6 +26,7 @@
     }
 
     .btn-current-location {
+        display: none;
         background-color: $color-gray_6E707A;
         height: 2.2rem;
         width: 2.2rem;
@@ -46,6 +47,7 @@
     }
 
     .btn-fav {
+        display: none;
         cursor: pointer;
         z-index: 1;
         &:focus {
@@ -111,5 +113,15 @@
         &:before {
             background-image: url(../..//src/images/sunrise.png);
         }
+    }
+
+    .notice {
+        background-color: $color-white_E7E7EB;
+        width: 50%;
+        margin: 2rem auto;
+        transition: .5s ease-in-out;
+        padding: 1.5rem;
+        border-radius: .4rem;
+        text-align: center;
     }
 }

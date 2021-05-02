@@ -6,6 +6,7 @@
     }
     h6 {
         font-size: 1.4rem;
+        text-align: center;
     }
     .btn-type-term {
         display: none;
@@ -24,7 +25,8 @@
 
     .forecasts {
         @include grid(1, 2rem);
-
+        overflow: auto;
+        height: 175px;
         @include tablet {
             @include grid(5, 2rem);
         }
@@ -55,7 +57,7 @@
         .hightlight {
             height: 135px;
             background-color: $color-blue_1E213A;
-            .wind-speed, .sea-level, .presure {
+            .wind-speed, .population, .presure {
                 font-size: 3.5rem;
             }
 
