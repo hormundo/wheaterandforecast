@@ -2,10 +2,7 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
     min-height: 100%;
-
-    @include tablet {
-        overflow: hidden;
-    }
+    
 }
 *, *:before, *:after {
     box-sizing: inherit;

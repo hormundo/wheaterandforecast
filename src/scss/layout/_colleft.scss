@@ -1,18 +1,18 @@
 .col-left {
-    background-color: $color-blue_1E213A;
+    background-color: #1e213a;
     position: relative;
-    
+    background-image: url(./../../src/images/Cloud-background.png);
+    background-repeat: no-repeat;
+    background-position: center top;
     &:after {
         content: "";
         height: 100%;
         width: 100%;
-        background-image: url(./../../src/images/Cloud-background.png);
-        opacity: .5;
         position: absolute;
-        background-repeat: no-repeat;
         left: 0;
-        background-position: top;
         top: 50px;
+        background-color: #1e213a;
+        z-index: -1;
     }
 
     .btn-search-location {
